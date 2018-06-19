@@ -2,6 +2,7 @@ from setuptools import setup
 
 setup(
     name="pytest-dictsdiff",
+    version='0.5',
     packages=["pytest_dictsdiff"],
     author='Lukasz Balcerzak',
     author_email='lukaszbalcerzak@gmail.com',
