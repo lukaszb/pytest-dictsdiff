@@ -1,3 +1,4 @@
+import datetime
 import decimal
 import dictdiffer
 import json
@@ -57,5 +58,7 @@ class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, decimal.Decimal):
             return str(o)
+        if isinstance(o, (datetime.datetime, datetime.date, datetime.time)):
+            return o.isoformat()
         else:
             return super().default(o)
