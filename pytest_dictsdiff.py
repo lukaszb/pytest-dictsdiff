@@ -1,3 +1,4 @@
+import decimal
 import dictdiffer
 import json
 import pytest
@@ -34,7 +35,7 @@ def dicts_are_same(pytestconfig):
 
 
 def as_json(d):
-    return json.dumps(d, sort_keys=True, indent=2)
+    return json.dumps(d, sort_keys=True, indent=2, cls=JSONEncoder)
 
 
 def diff_chunk_as_text(chunk):
@@ -49,3 +50,12 @@ def diff_chunk_as_text(chunk):
         text += 'missing values under %r key on the right: %r' % (path, values)
 
     return text
+
+
+class JSONEncoder(json.JSONEncoder):
+
+    def default(self, o):
+        if isinstance(o, decimal.Decimal):
+            return str(o)
+        else:
+            return super().default(o)
