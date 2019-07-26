@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="pytest-dictsdiff",
-    version='0.5.6',
+    version='0.5.7',
     py_modules=["pytest_dictsdiff"],
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
