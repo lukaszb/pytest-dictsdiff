@@ -19,6 +19,18 @@ def test_dicts(dicts_are_same):
     assert dicts_are_same(dict1, dict2)
 ```
 
+Or compare objects using direct function call:
+
+```python
+from pytest_dictsdiff import check_objects
+
+
+def test_dicts():
+    dict1 = {'a': 1, 'b': 2, 'c': {'d': 4, 'e': 5}}
+    dict2 = {'a': 100, 'f': 2, 'c': {'d': 400, 'g': 5}}
+    assert check_objects(dict1, dict2)
+```
+
 ## Todos
 
 - [ ] Use `pprint` instead of `json` when showing objects (currently it would fail
